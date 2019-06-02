@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pistol : Weapon
+public class Rifle : Weapon
 {
     public override void Init_Weapon()
     {
         bullet = Resources.Load("Prefabs/Bullet_Pistol") as GameObject;
 
-        attackSpd = 1f;
-        bulletSpd = 10f;
+        attackSpd = 10f;
+        bulletSpd = 20f;
         damage = 1f;
-        max_bullet = 10f;
+        max_bullet = 30f;
         cur_bullet = max_bullet;
     }
 

@@ -11,6 +11,11 @@ public class PlayManager : MonoBehaviour
         Instance = this;
     }
 
+    void Start()
+    {
+        GameObject.Find("DropBox").GetComponent<DropBox>().Init_DropBox();
+    }
+
     public GameObject player;
 
     public PlayerControl GetControl()

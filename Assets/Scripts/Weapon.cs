@@ -18,7 +18,6 @@ public abstract class Weapon : MonoBehaviour
 
     public virtual void Shoot(Vector3 vec)
     {
-        
         SetCool();
 
         cur_bullet -= 1f;

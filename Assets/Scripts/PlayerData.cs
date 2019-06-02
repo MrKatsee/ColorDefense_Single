@@ -27,16 +27,41 @@ public class PlayerData : CharacterData
 
     void Start()
     {
-
+        //기본 무기
+        Main_Weapon = new GameObject("Pistol").AddComponent<Pistol>();
+        Main_Weapon.transform.parent = gameObject.transform;
+        Main_Weapon.Init_Weapon();
     }
 
     public void ChangeWeapon()
     {
+
+        Collider[] c = Physics.OverlapBox(transform.position, new Vector3(1f, 1f, 1f) * 0.5f);
         //box와 겹친 경우 -> sub / drop 간 교환
-        //이 때, 주운 무기를 Init 해줘야함
+
+        bool alreadyGetted = false;
+
+        foreach (var col in c)
+        {
+            if (col.gameObject.tag == "Box" && alreadyGetted == false)
+            {
+                Sub_Weapon = col.gameObject.GetComponent<DropBox>().GetWeapon(transform);
+                alreadyGetted = true;
+                Destroy(col.gameObject);
+            }
+        }
+
         //아닌 경우 -> main / sub 간 교환
-        Weapon temp = Main_Weapon;
-        Main_Weapon = Sub_Weapon;
-        Sub_Weapon = temp;
+        if (alreadyGetted == false)
+        {
+            if (sub_Weapon == null)
+                return;
+
+            Weapon temp = Main_Weapon;
+            Main_Weapon = Sub_Weapon;
+            Sub_Weapon = temp;
+        }
+
+        Debug.Log($"Main : {Main_Weapon.name} / Sub : {Sub_Weapon.name}");
     }
 }
