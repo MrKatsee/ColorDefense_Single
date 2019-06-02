@@ -22,4 +22,6 @@ public class PlayManager : MonoBehaviour
     {
         return player.GetComponent<PlayerData>();
     }
+
+    
 }

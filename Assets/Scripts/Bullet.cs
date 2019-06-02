@@ -33,4 +33,6 @@ public class Bullet : MonoBehaviour
         StopAllCoroutines();
         Destroy(gameObject);
     }
+
+    
 }
