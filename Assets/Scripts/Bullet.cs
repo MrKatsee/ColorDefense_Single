@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
     {
         while(true)
         {
-            transform.Translate(vec * spd * Time.deltaTime);
+            transform.Translate(vec * spd * MyTime.deltaTime);
 
             yield return null;
         }

@@ -10,7 +10,7 @@ public class Control : MonoBehaviour
     {
         Vector3 vec = _vec.normalized;
 
-        transform.Translate(vec * spd * Time.deltaTime);
+        transform.Translate(vec * spd * MyTime.deltaTime);
 
         transform.GetChild(0).transform.rotation = Quaternion.LookRotation(vec, Vector3.up);
     }
