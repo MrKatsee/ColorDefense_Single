@@ -17,6 +17,7 @@ public class PlayManager : MonoBehaviour
     }
 
     public GameObject player;
+    public GameObject dropBox;
 
     public PlayerControl GetControl()
     {
@@ -28,5 +29,9 @@ public class PlayManager : MonoBehaviour
         return player.GetComponent<PlayerData>();
     }
 
-    
+    public void InstantiateDropBox(Vector3 pos)
+    {
+        DropBox dB = Instantiate(dropBox, pos, Quaternion.identity).GetComponent<DropBox>();
+        dB.Init_DropBox();
+    }
 }

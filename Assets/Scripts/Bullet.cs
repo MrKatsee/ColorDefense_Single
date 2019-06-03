@@ -20,12 +20,22 @@ public class Bullet : MonoBehaviour
 
     IEnumerator Move()
     {
+        float timer = 0f;
+
         while(true)
         {
+            if(timer >= 5f)
+            {
+                break;
+            }
+
             transform.Translate(vec * spd * MyTime.deltaTime);
 
+            timer += MyTime.deltaTime;
             yield return null;
         }
+
+        DestroyCall();
     }
 
     public void DestroyCall()
@@ -34,5 +44,12 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject);
     }
 
-    
+    private void OnTriggerEnter(Collider c)
+    {
+        if (c.tag == "Enemy")
+        {
+            c.GetComponent<Monster>().GetDamage(damage);
+            DestroyCall();
+        }
+    }
 }
